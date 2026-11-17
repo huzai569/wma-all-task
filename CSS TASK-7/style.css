@@ -183,23 +183,3 @@ aside ul > li {
 .box-twoo ~ .boxes {
     margin-top: 20px;
 }
-#repo-button{
-    background-color: bisque;
-    color: aliceblue;
-    border: 1px solid;
-    border-radius: 8px;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-top: 20px;
-    margin-left: 20px;
-    font-size: 16px;
-    font-weight: bold;
-    width: 200px;
-    height: 60px;
-    text-align: center;
-
-}
-#repo-button a{
-    color: green;
-    text-decoration: none;
-}
