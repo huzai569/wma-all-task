@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yessy Art Gallery</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@400;500;600&family=Yellowtail&display=swap">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="hero">
+  <!-- painted golden landscape -->
+  <svg class="paint" viewBox="0 0 1440 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <radialGradient id="glow" cx="52%" cy="55%" r="60%">
+        <stop offset="0" stop-color="#ffd54a"/>
+        <stop offset=".35" stop-color="#e9a21b"/>
+        <stop offset=".7" stop-color="#7d4a12"/>
+        <stop offset="1" stop-color="#2e1a08"/>
+      </radialGradient>
+      <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#8a5a16" stop-opacity="0"/>
+        <stop offset="1" stop-color="#2a1708"/>
+      </linearGradient>
+      <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="14"/></filter>
+      <filter id="soft2" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="5"/></filter>
+    </defs>
+    <rect width="1440" height="560" fill="url(#glow)"/>
+    <g filter="url(#soft)" opacity=".9">
+      <ellipse cx="260" cy="150" rx="300" ry="130" fill="#4a2c0c"/>
+      <ellipse cx="760" cy="110" rx="520" ry="120" fill="#5a3510"/>
+      <ellipse cx="1220" cy="180" rx="330" ry="150" fill="#4a2c0c"/>
+      <ellipse cx="520" cy="190" rx="220" ry="90" fill="#9a6414"/>
+      <ellipse cx="980" cy="215" rx="240" ry="90" fill="#b27a18"/>
+    </g>
+    <g filter="url(#soft2)" fill="#3a2209">
+      <path d="M690 560 C700 470 680 410 640 330 C600 290 520 250 450 255 C520 215 620 215 690 270 C720 210 800 170 900 190 C830 205 790 240 770 300 C800 360 770 450 790 560Z"/>
+      <ellipse cx="640" cy="215" rx="260" ry="60" fill="#2b1807"/>
+      <ellipse cx="870" cy="170" rx="250" ry="52" fill="#2b1807"/>
+      <ellipse cx="1010" cy="260" rx="170" ry="40" fill="#3a2209"/>
+      <ellipse cx="400" cy="270" rx="190" ry="44" fill="#3a2209"/>
+    </g>
+    <g filter="url(#soft2)" opacity=".8">
+      <ellipse cx="1180" cy="440" rx="130" ry="70" fill="#c4781a"/>
+      <ellipse cx="260" cy="430" rx="150" ry="70" fill="#b5651a"/>
+      <ellipse cx="1300" cy="360" rx="90" ry="55" fill="#d7952a"/>
+    </g>
+    <rect y="360" width="1440" height="200" fill="url(#ground)"/>
+  </svg>
+
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <div class="nav-left">
+        <a class="logo" href="#top" aria-label="Yessy Art Gallery">Yessy<small>art gallery</small></a>
+        <button class="link hide-sm" type="button">Buy Art <span class="caret"></span></button>
+        <button class="link hide-sm" type="button">Sell Art <span class="caret"></span></button>
+        <a class="hide-sm" href="#about">About Us</a>
+      </div>
+      <div class="nav-right">
+        <button class="link hide-sm" type="button">Your Account <span class="caret"></span></button>
+        <a class="hide-sm" href="#help">Help</a>
+        <a class="cart" href="#cart" aria-label="Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          <span class="badge" id="cartCount">0</span>
+          <span class="total">Total: <span id="cartTotal">$0.00</span></span>
+        </a>
+      </div>
+    </nav>
+
+    <div class="hero-body" id="top">
+      <h1>Simply Art. Simply Beautiful.</h1>
+      <p class="lede">For seventeen years, artists and buyers have trusted Yessy to buy and sell art. Now find your perfect art.</p>
+      <form class="search" id="searchForm" role="search">
+        <label for="q" hidden>Search</label>
+        <input id="q" type="text" placeholder="Enter Keywords" autocomplete="off">
+        <label for="cat" hidden>Category</label>
+        <select id="cat">
+          <option value="">All Art</option>
+          <option>Paintings &amp; Prints</option>
+          <option>Photography</option>
+          <option>Drawings &amp; Illustration</option>
+          <option>Digital Art</option>
+          <option>Sculptures &amp; Carvings</option>
+          <option>Ceramics &amp; Pottery</option>
+          <option>Glass</option>
+          <option>Jewelry</option>
+          <option>Furniture</option>
+          <option>Textile &amp; Apparel</option>
+          <option>Antiques &amp; Collectibles</option>
+          <option>Crafts &amp; Other Art</option>
+        </select>
+        <button type="submit" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="10" cy="10" r="6"/><path d="M15 15l6 6"/></svg>
+        </button>
+      </form>
+      <p class="status" id="status" aria-live="polite"></p>
+    </div>
+  </div>
+</header>
+
+<section aria-labelledby="catTitle">
+  <div class="cat-head"><div class="wrap"><h2 id="catTitle">Categories</h2></div></div>
+  <div class="wrap cat-wrap">
+    <div class="grid" id="grid">
+
+      <button class="tile" type="button" data-cat="Paintings &amp; Prints"><div class="art">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><linearGradient id="p1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e7c36e"/><stop offset=".5" stop-color="#9ec0b8"/><stop offset="1" stop-color="#2f6a70"/></linearGradient></defs>
+          <rect width="200" height="200" fill="url(#p1)"/>
+          <rect x="0" y="40" width="46" height="90" fill="#b5703f"/><rect x="46" y="62" width="40" height="70" fill="#d79a52"/><rect x="86" y="30" width="34" height="100" fill="#8f5a3a"/><rect x="120" y="55" width="42" height="75" fill="#c98a4a"/><rect x="162" y="38" width="38" height="92" fill="#a86a40"/>
+          <g fill="#3e2a20" opacity=".6"><rect x="10" y="60" width="8" height="14"/><rect x="28" y="60" width="8" height="14"/><rect x="56" y="82" width="8" height="14"/><rect x="96" y="52" width="8" height="14"/><rect x="132" y="75" width="8" height="14"/><rect x="172" y="60" width="8" height="14"/></g>
+          <rect y="130" width="200" height="70" fill="#2d6068"/><path d="M0 150h200M0 168h200" stroke="#6aa0a2" stroke-width="2" opacity=".5"/>
+          <path d="M70 172c14-8 40-8 60 0-18 6-44 6-60 0Z" fill="#1d1d1d"/>
+        </svg><span class="label">Paintings<br>&amp; Prints</span></div></button>
+
+      <button class="tile" type="button" data-cat="Photography"><div class="art">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><radialGradient id="p2" cx=".5" cy=".4" r=".8"><stop offset="0" stop-color="#e5e5e5"/><stop offset="1" stop-color="#8d8d8d"/></radialGradient></defs>
+          <rect width="200" height="200" fill="url(#p2)"/>
+          <ellipse cx="100" cy="30" rx="58" ry="26" fill="#2a2a2a"/><ellipse cx="62" cy="40" rx="22" ry="16" fill="#3a3a3a"/>
+          <ellipse cx="100" cy="95" rx="42" ry="56" fill="#d8d8d8"/>
+          <rect x="52" y="78" width="40" height="26" rx="11" fill="#0d0d0d"/><rect x="108" y="78" width="40" height="26" rx="11" fill="#0d0d0d"/><rect x="90" y="86" width="20" height="4" fill="#0d0d0d"/>
+          <path d="M84 132q16 12 32 0q-16 6-32 0Z" fill="#161616"/>
+          <path d="M40 200c4-34 30-48 60-48s56 14 60 48Z" fill="#1e1e1e"/>
+        </svg><span class="label">Photography</span></div></button>
+
+      <button class="tile" type="button" data-cat="Drawings &amp; Illustration"><div class="art">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><linearGradient id="p3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a8076"/><stop offset="1" stop-color="#40382f"/></linearGradient></defs>
+          <rect width="200" height="200" fill="url(#p3)"/>
+          <path d="M70 60c-8 20-14 40-10 70 4 24 20 36 42 36s34-14 32-40c-2-26-14-40-26-52 10-4 18-4 24 0l4-6c-12-8-30-6-42 4-6-4-16-6-24-12Z" fill="#241e19"/>
+          <path d="M138 80c24-4 32 22 8 46" stroke="#241e19" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <ellipse cx="100" cy="176" rx="64" ry="8" fill="#1d1813" opacity=".7"/>
+        </svg><span class="label">Drawings<br>&amp; Illustration</span></div></button>
+
+      <button class="tile" type="button" data-cat="Digital Art"><div class="art">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><radialGradient id="p4" cx=".5" cy=".5" r=".7"><stop offset="0" stop-color="#ff5aa0"/><stop offset=".45" stop-color="#c0209a"/><stop offset="1" stop-color="#5a1aa8"/></radialGradient></defs>
+          <rect width="200" height="200" fill="url(#p4)"/>
+          <g transform="translate(100 100)" fill="none" stroke-linecap="round">
+            <path d="M0 0c20-30 60-20 70 10-20-10-50-8-70-10Z" fill="#ff8a3a" opacity=".9"/>
+            <path d="M0 0c30 10 40 50 10 70 0-20-4-50-10-70Z" fill="#ffb02e" opacity=".85"/>
+            <path d="M0 0c-20 30-60 24-70-8 24 8 50 6 70 8Z" fill="#3ad0e0" opacity=".8"/>
+            <path d="M0 0c-30-6-44-46-14-70 4 24 8 48 14 70Z" fill="#7a3ae0" opacity=".85"/>
+            <path d="M0 0c-6 30-40 52-70 30 22-6 50-18 70-30Z" fill="#ff4a8a" opacity=".8"/>
+          </g>
+        </svg><span class="label">Digital Art</span></div></button>
+
+      <button class="tile" type="button" data-cat="Sculptures &amp; Carvings"><div class="art">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><linearGradient id="p5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9a9a9a"/><stop offset="1" stop-color="#2b2b2b"/></linearGradient></defs>
+          <rect width="200" height="200" fill="url(#p5)"/>
+          <path d="M70 30c24-14 56-2 62 26 2 12-2 22-6 30 6 10 8 26 4 40l12 20-6 24H60l4-40c-6-14-10-34-4-52-8-14-4-38 10-48Z" fill="#e8e4dc"/>
+          <path d="M98 40c18-2 32 14 30 34-10-18-18-24-30-34Z" fill="#c9c4ba"/>
+          <path d="M120 100c4 20 0 40-10 60l-18 10" stroke="#b9b4aa" stroke-width="6" fill="none"/>
+          <path d="M84 62c8-2 14 0 18 4M90 78c4 2 8 2 12 0" stroke="#5a564e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg><span class="label">Sculptures<br>&amp;&nbsp;Carvings</span></div></button>
+
+      <button class="tile" type="button" data-cat="Ceramics &amp; Pottery"><div class="art">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><linearGradient id="p6" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6b4a3a"/><stop offset="1" stop-color="#2a1a14"/></linearGradient><radialGradient id="p6b" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#e0a070"/><stop offset="1" stop-color="#7a3f20"/></radialGradient></defs>
+          <rect width="200" height="200" fill="url(#p6)"/>
+          <ellipse cx="52" cy="128" rx="38" ry="46" fill="url(#p6b)"/><ellipse cx="52" cy="84" rx="16" ry="6" fill="#5a2f18"/>
+          <ellipse cx="124" cy="116" rx="34" ry="42" fill="url(#p6b)"/><ellipse cx="124" cy="76" rx="14" ry="5" fill="#5a2f18"/>
+          <ellipse cx="172" cy="140" rx="26" ry="34" fill="url(#p6b)"/>
+          <ellipse cx="86" cy="162" rx="40" ry="26" fill="url(#p6b)" opacity=".95"/>
+          <path d="M20 112q32 10 64 0M92 100q32 10 64 0" stroke="#4a2410" stroke-width="3" fill="none" opacity=".55"/>
+        </svg><span class="label">Ceramics<br>&amp; Pottery</span></div></button>
+
+      <button class="tile" type="button" data-cat="Glass"><div class="art">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="200" height="200" fill="#1b2a38"/>
+          <g>
+            <rect x="0" y="0" width="70" height="60" fill="#2f8fb0"/><rect x="70" y="0" width="60" height="60" fill="#e4c050"/><rect x="130" y="0" width="70" height="60" fill="#a0d4e0"/>
+            <rect x="0" y="60" width="50" height="70" fill="#f0e6c8"/><rect x="50" y="60" width="80" height="70" fill="#d04a6a"/><rect x="130" y="60" width="70" height="70" fill="#4aa0c8"/>
+            <rect x="0" y="130" width="90" height="70" fill="#7ab0d0"/><rect x="90" y="130" width="50" height="70" fill="#e07a3a"/><rect x="140" y="130" width="60" height="70" fill="#68b0a0"/>
+          </g>
+          <g stroke="#14181d" stroke-width="4"><path d="M70 0v60M130 0v60M50 60v70M130 60v70M90 130v70M140 130v70"/><path d="M0 60h200M0 130h200"/></g>
+          <path d="M0 0l200 200" stroke="#fff" stroke-opacity=".12" stroke-width="30"/>
+        </svg><span class="label">Glass</span></div></button>
+
+      <button class="tile" type="button" data-cat="Jewelry"><div class="art">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><linearGradient id="p8" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a6446"/><stop offset="1" stop-color="#3a281c"/></linearGradient></defs>
+          <rect width="200" height="200" fill="url(#p8)"/>
+          <ellipse cx="62" cy="120" rx="48" ry="30" fill="none" stroke="#e8d2a8" stroke-width="9"/>
+          <ellipse cx="140" cy="86" rx="44" ry="26" fill="none" stroke="#f1e4c8" stroke-width="8"/>
+          <g fill="#f4ecd8"><circle cx="40" cy="170" r="9"/><circle cx="62" cy="176" r="9"/><circle cx="84" cy="178" r="9"/><circle cx="106" cy="176" r="9"/><circle cx="128" cy="170" r="9"/><circle cx="148" cy="162" r="9"/></g>
+        </svg><span class="label">Jewelry</span></div></button>
+
+      <button class="tile" type="button" data-cat="Furniture"><div class="art">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><linearGradient id="p9" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4a2a20"/><stop offset="1" stop-color="#8a5a40"/></linearGradient></defs>
+          <rect width="200" height="200" fill="url(#p9)"/>
+          <rect x="30" y="40" width="150" height="120" fill="#c42a22"/><rect x="30" y="40" width="150" height="14" fill="#8e1a16"/>
+          <rect x="44" y="66" width="56" height="38" fill="#a82019"/><rect x="108" y="66" width="56" height="38" fill="#a82019"/><rect x="44" y="112" width="120" height="34" fill="#a82019"/>
+          <g fill="#e8c060"><circle cx="72" cy="85" r="3.5"/><circle cx="136" cy="85" r="3.5"/><circle cx="104" cy="129" r="3.5"/></g>
+          <rect x="38" y="160" width="8" height="30" fill="#2a1410"/><rect x="164" y="160" width="8" height="30" fill="#2a1410"/>
+        </svg><span class="label">Furniture</span></div></button>
+
+      <button class="tile" type="button" data-cat="Textile &amp; Apparel"><div class="art">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><pattern id="pt" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="40" height="40" fill="#d02a6a"/><path d="M0 20L20 0L40 20L20 40Z" fill="#2fb0a0"/><circle cx="20" cy="20" r="6" fill="#f2c040"/></pattern>
+          <pattern id="pt2" width="30" height="30" patternUnits="userSpaceOnUse"><rect width="30" height="30" fill="#3a1a5a"/><path d="M0 30L30 0" stroke="#e8508a" stroke-width="6"/></pattern></defs>
+          <rect width="200" height="200" fill="url(#pt2)"/>
+          <path d="M20 30c40-14 120-14 160 0l-14 150H34Z" fill="url(#pt)"/>
+          <path d="M20 30c40-14 120-14 160 0" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/>
+        </svg><span class="label">Textile<br>&amp; Apparel</span></div></button>
+
+      <button class="tile" type="button" data-cat="Antiques &amp; Collectibles"><div class="art">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><linearGradient id="p11" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a463e"/><stop offset="1" stop-color="#14120f"/></linearGradient><linearGradient id="g11" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6e2a0"/><stop offset="1" stop-color="#a47a2a"/></linearGradient></defs>
+          <rect width="200" height="200" fill="url(#p11)"/>
+          <circle cx="100" cy="104" r="66" fill="none" stroke="url(#g11)" stroke-width="14"/>
+          <circle cx="100" cy="104" r="52" fill="none" stroke="#e8d8b8" stroke-width="3" stroke-dasharray="3 6"/>
+          <circle cx="100" cy="104" r="40" fill="#1a1612" opacity=".7"/>
+          <path d="M100 74v32l20 12" stroke="url(#g11)" stroke-width="5" fill="none" stroke-linecap="round"/>
+        </svg><span class="label">Antiques<br>&amp; Collectibles</span></div></button>
+
+      <button class="tile" type="button" data-cat="Crafts &amp; Other Art"><div class="art">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="200" height="200" fill="#9a6a44"/>
+          <g>
+            <path d="M0 0h100v100H0Z" fill="#b4825a"/><path d="M100 0h100v100H100Z" fill="#7e5333"/>
+            <path d="M0 100h100v100H0Z" fill="#7e5333"/><path d="M100 100h100v100H100Z" fill="#c09068"/>
+          </g>
+          <g stroke="#3e2816" stroke-width="3" fill="none" opacity=".7">
+            <path d="M0 0l100 100M100 0L0 100M100 0l100 100M200 0L100 100M0 100l100 100M100 100L0 200M100 100l100 100M200 100L100 200"/>
+            <path d="M50 0v200M150 0v200M0 50h200M0 150h200" opacity=".5"/>
+          </g>
+        </svg><span class="label">Crafts<br>&amp; Other Art</span></div></button>
+
+    </div>
+  </div>
+</section>
+
+<footer id="about"><div class="wrap"><span>&copy; Yessy Art Gallery</span><span id="help">Help &middot; Terms &middot; Privacy</span></div></footer>
+
+<script>
+(function(){
+  var form=document.getElementById('searchForm');
+  var q=document.getElementById('q');
+  var cat=document.getElementById('cat');
+  var status=document.getElementById('status');
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  function say(){
+    var kw=q.value.trim();
+    var c=cat.value;
+    var where=c?c:'all art';
+    status.innerHTML=kw
+      ? 'Searching '+esc(where)+' for “'+esc(kw)+'”…'
+      : 'Browsing '+esc(where)+'.';
+  }
+  form.addEventListener('submit',function(e){e.preventDefault();say()});
+  document.getElementById('grid').addEventListener('click',function(e){
+    var t=e.target.closest('.tile'); if(!t) return;
+    var name=t.getAttribute('data-cat');
+    for(var i=0;i<cat.options.length;i++){ if(cat.options[i].text===name){cat.selectedIndex=i;break} }
+    say();
+    window.scrollTo({top:0,behavior:'smooth'});
+    q.focus({preventScroll:true});
+  });
+})();
+</script>
+</body>
+</html>

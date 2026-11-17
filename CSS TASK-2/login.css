@@ -1,0 +1,175 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #f1f1f1;
+    color: #171717;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.login-container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* HEADER */
+.login-header {
+    text-align: center;
+    border-bottom: 3px double black;
+    padding: 15px;
+}
+
+.login-back {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 15px;
+    color: gray;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    margin-left: 100px;
+}
+
+.login-header h1 {
+    font-size: 50px;
+    margin: 10px 0;
+}
+
+.login-header p {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+/* LOGIN BOX */
+.login-box {
+    width: 100%;
+    max-width: 430px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border: 1px solid #cccccc;
+}
+
+.login-box h2 {
+    text-align: center;
+    font-size: 30px;
+    margin: 0 0 10px;
+}
+
+.login-description {
+    text-align: center;
+    color: #666666;
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+/* FORM */
+.login-box form > label {
+    display: block;
+    margin: 15px 0 7px;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.login-box input[type="email"],
+.login-box input[type="password"] {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #aaaaaa;
+    font-size: 18px;
+}
+
+.login-box input:focus {
+    outline: 1px solid #56778d;
+}
+
+/* REMEMBER AND FORGOT PASSWORD */
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin: 18px 0;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.login-options a {
+    color: #344d60;
+    text-decoration: none;
+}
+
+/* LOGIN BUTTON */
+.login-button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    background-color: #56778d;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #344d60;
+}
+
+/* LINKS */
+.signup-text {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 25px;
+}
+
+.signup-text a,
+.login-home {
+    color: #344d60;
+    text-decoration: none;
+}
+
+.login-home {
+    display: block;
+    width: fit-content;
+    margin: 20px auto 0;
+    font-size: 20px;
+}
+
+/* FOOTER */
+.login-footer {
+    text-align: center;
+    font-size: 28px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    .login-header h1 {
+        font-size: 29px;
+    }
+
+    .login-box {
+        padding: 20px;
+        margin-top: 25px;
+    }
+
+    .login-options {
+        flex-wrap: wrap;
+    }
+}
+#your-news{
+    font-size: 17px;
+}

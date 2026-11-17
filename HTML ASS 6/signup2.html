@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGN UP - Step 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        main {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        form p {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: calc(100% - 20px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sign Up Form</h1>
+        <p>Step 2 of 4: Contact Information</p>
+        <nav><a href="index.html">Home</a></nav>
+    </header>
+
+    <main>
+        <h2>Contact Information</h2>
+        <form action="signup3.html" method="get">
+            <p>
+                <label for="phone">Phone Number:</label><br>
+                <input type="tel" id="phone" name="phone" placeholder="e.g. 03001234567">
+            </p>
+
+            <p>
+                <label for="country">Country:</label><br>
+                <input list="countries" id="country" name="country">
+                <datalist id="countries">
+                    <option value="Pakistan">
+                    <option value="India">
+                    <option value="Saudi Arabia">
+                    <option value="United Arab Emirates">
+                    <option value="United Kingdom">
+                    <option value="United States">
+                    <option value="Canada">
+                </datalist>
+            </p>
+
+            <p>
+                <label for="address-line">Address:</label><br>
+                <input type="text" id="address-line" name="address-line" placeholder="Street / House address">
+            </p>
+            <p>
+                <label for="full-address">Full Address:</label><br>
+                <textarea id="full-address" name="full-address" rows="4" cols="40"></textarea>
+            </p>
+
+            <p>
+                <label for="contact-method">Preferred Contact Method:</label><br>
+                <select id="contact-method" name="contact-method">
+                    <option value="">Choose a method</option>
+                    <option value="email">Email</option>
+                    <option value="phone">Phone</option>
+                    <option value="sms">SMS</option>
+                </select>
+            </p>
+
+            <p>
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the Terms and Conditions</label>
+            </p>
+
+            <p><button type="submit">Next</button></p>
+        </form>
+    </main>
+    <footer>
+        <p>&copy;  Copyright reserved 2026 My Website</p>
+    </footer>
+</body>
+</html>

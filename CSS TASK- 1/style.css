@@ -1,0 +1,66 @@
+header{
+    background-color: light sandybrown
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+#title{
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333;
+}
+nav{
+    padding: 10px;
+    text-transform: uppercase;
+    text-align: center;  
+     
+}
+#home{
+    color: burlywood;
+    margin: 60px;
+}
+#funfacts{
+    color: burlywood;
+    padding: 60px;
+}
+main{
+    font-size: larger;
+    margin: 100px;
+    gap: 10px;
+    display:flex
+    
+}
+#moose{
+    border-radius: 10px;
+}
+#learn{
+    color: coral;
+}
+h2{
+    text-transform: uppercase;
+    text-align: left;
+    margin: 50px;
+    transform: translateX(-15px);
+    color: burlywood;
+}
+ul,ol{
+      gap: 50px;
+      font-size: 20px; 
+}
+video{
+    display: block;
+    margin:0 auto;
+}
+.task {
+    list-style: none;
+    text-align: center ;
+      margin: 50px;  
+}
+.taskk {
+     text-decoration: none ;
+    border: 1px solid black;
+      width: 200px; background-color: #8fbc8f;
+      color: #fff; font-size: 22px;
+      padding: 20px;
+}

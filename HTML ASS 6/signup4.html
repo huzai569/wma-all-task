@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGN UP - Step 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        main {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        form p {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="checkbox"],
+        select {
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sign Up Form</h1>
+        <p>Step 4 of 4: Preferences</p>
+        <nav><a href="index.html">Home</a></nav>
+    </header>
+
+    <main>
+        <h2>Preferences</h2>
+        <form action="thankyou.html" method="get">
+            <p>
+                <input type="checkbox" id="notifications" name="notifications" value="yes">
+                <label for="notifications">Receive Notifications</label>
+            </p>
+
+            <p>
+                <label for="job-location">Preferred Job Location (you can select more than one):</label><br>
+                <select id="job-location" name="job-location" multiple size="5">
+                    <option value="Karachi">Karachi</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Lahore">Lahore</option>
+                    <option value="Islamabad">Islamabad</option>
+                    <option value="Remote">Remote</option>
+                    <option value="Other">Other</option>
+                </select>
+            </p>
+
+            <p><a href="forgot-password.html">Forgot Password?</a></p>
+
+            <p><button type="submit">Submit</button></p>
+        </form>
+
+        <p><a href="index.html">Home Page</a></p>
+    </main>
+    <footer>
+        <p>&copy;  Copyright reserved 2026 My Website</p>   
+        </footer>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Box Model Demo</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; color: #222; }
+  h1 { margin-bottom: 4px; }
+  h2 { margin-top: 40px; border-bottom: 2px solid #333; padding-bottom: 4px; }
+  p.note { margin: 4px 0 12px; font-size: 14px; color: #444; }
+  code { background: #e0e0e0; padding: 1px 4px; border-radius: 3px; }
+
+  /* Shared look: content area is blue, padding area is orange (via background-clip),
+     border is dark red, margin shows as the gap between boxes. */
+  .box {
+    background-color: #f5b041;                 /* padding + content colour */
+    background-image: linear-gradient(#5dade2, #5dade2);
+    background-repeat: no-repeat;
+    background-clip: border-box;
+    box-sizing: content-box;                   /* default behaviour */
+    border-style: solid;
+    border-color: #922b21;
+    margin: 10px 0;
+    overflow: hidden;
+    font-size: 13px;
+    color: #000;
+  }
+
+  /* ---------- PART 1: WIDTH EXPERIMENTS ---------- */
+  /* Content width stays 200px; total width changes because padding/border are added */
+  .w1 { width: 200px; padding: 0;     border-width: 0;   }  /* total = 200px */
+  .w2 { width: 200px; padding: 20px;  border-width: 0;   }  /* total = 240px */
+  .w3 { width: 200px; padding: 20px;  border-width: 5px; }  /* total = 250px */
+  .w4 { width: 200px; padding: 50px;  border-width: 15px;}  /* total = 330px */
+  .w5 { width: 200px; padding: 10px 60px; border-width: 2px 20px; } /* different left/right vs top/bottom */
+
+  /* Different content widths, same padding + border */
+  .w6 { width: 100px; padding: 20px; border-width: 5px; }   /* total = 150px */
+  .w7 { width: 300px; padding: 20px; border-width: 5px; }   /* total = 350px */
+
+  /* border-box: width INCLUDES padding + border */
+  .w8 { box-sizing: border-box; width: 200px; padding: 20px; border-width: 5px; } /* total = 200px, content = 150px */
+  .w9 { box-sizing: border-box; width: 200px; padding: 50px; border-width: 15px; } /* total = 200px, content = 70px */
+
+  /* ---------- PART 2: HEIGHT EXPERIMENTS ---------- */
+  .row { display: flex; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
+  .h { width: 120px; }
+  .h1 { height: 100px; padding: 0;    border-width: 0;   }  /* total = 100px */
+  .h2 { height: 100px; padding: 20px; border-width: 0;   }  /* total = 140px */
+  .h3 { height: 100px; padding: 20px; border-width: 5px; }  /* total = 150px */
+  .h4 { height: 100px; padding: 40px; border-width: 15px;}  /* total = 210px */
+  .h5 { height: 50px;  padding: 20px; border-width: 5px; }  /* total = 100px */
+  .h6 { height: 180px; padding: 20px; border-width: 5px; }  /* total = 230px */
+  .h7 { box-sizing: border-box; height: 100px; padding: 20px; border-width: 5px; }  /* total = 100px, content = 50px */
+  .h8 { box-sizing: border-box; height: 100px; padding: 40px; border-width: 15px;}  /* total = 100px, content = 0px */
+
+  /* ---------- PART 3: MARGIN (for completeness) ---------- */
+  .m1 { width: 150px; padding: 10px; border-width: 3px; margin: 0 0 0 0; }
+  .m2 { width: 150px; padding: 10px; border-width: 3px; margin: 30px 0 30px 60px; }
+
+  .label { font-weight: bold; background: #fff; padding: 2px 4px; display: inline-block; }
+  .legend span { display: inline-block; padding: 3px 8px; margin-right: 8px; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<h1>CSS Box Model Demo</h1>
+<p class="note">Every box is made of: <b>content</b> &rarr; <b>padding</b> &rarr; <b>border</b> &rarr; <b>margin</b>.</p>
+<div class="legend">
+  <span style="background:#5dade2">Content</span>
+  <span style="background:#f5b041">Padding</span>
+  <span style="background:#922b21;color:#fff">Border</span>
+  <span style="background:#fff;border:1px dashed #888">Margin (empty gap)</span>
+</div>
+
+<!-- ============ PART 1: WIDTH ============ -->
+<h2>Part 1 &ndash; Width, Padding and Border</h2>
+<p class="note">Default <code>box-sizing: content-box</code>: the <code>width</code> property sets only the content width. Padding and border are added on top.</p>
+
+<div class="box w1"><span class="label">W1</span> width:200 | padding:0 | border:0 &rarr; total 200px</div>
+<div class="box w2"><span class="label">W2</span> width:200 | padding:20 | border:0 &rarr; total 240px</div>
+<div class="box w3"><span class="label">W3</span> width:200 | padding:20 | border:5 &rarr; total 250px</div>
+<div class="box w4"><span class="label">W4</span> width:200 | padding:50 | border:15 &rarr; total 330px</div>
+<div class="box w5"><span class="label">W5</span> width:200 | padding:10px 60px | border:2px 20px &rarr; total 200+120+40 = 360px</div>
+
+<p class="note">Same padding (20px) and border (5px), different content widths:</p>
+<div class="box w6"><span class="label">W6</span> content 100 &rarr; total 150px</div>
+<div class="box w7"><span class="label">W7</span> content 300 &rarr; total 350px</div>
+
+<p class="note">With <code>box-sizing: border-box</code> the <code>width</code> includes padding and border, so the total stays 200px and the content shrinks.</p>
+<div class="box w8"><span class="label">W8</span> border-box 200 | padding:20 | border:5 &rarr; content 150px</div>
+<div class="box w9"><span class="label">W9</span> border-box 200 | padding:50 | border:15 &rarr; content 70px</div>
+
+<!-- ============ PART 2: HEIGHT ============ -->
+<h2>Part 2 &ndash; Height, Padding and Border</h2>
+<p class="note">Same idea applied to <code>height</code>. Boxes are side by side so the height difference is easy to compare.</p>
+
+<div class="row">
+  <div class="box h h1"><span class="label">H1</span> h:100 p:0 b:0<br>total 100</div>
+  <div class="box h h2"><span class="label">H2</span> h:100 p:20 b:0<br>total 140</div>
+  <div class="box h h3"><span class="label">H3</span> h:100 p:20 b:5<br>total 150</div>
+  <div class="box h h4"><span class="label">H4</span> h:100 p:40 b:15<br>total 210</div>
+</div>
+
+<p class="note">Different content heights, same padding (20px) and border (5px):</p>
+<div class="row">
+  <div class="box h h5"><span class="label">H5</span> h:50<br>total 100</div>
+  <div class="box h h3"><span class="label">H3</span> h:100<br>total 150</div>
+  <div class="box h h6"><span class="label">H6</span> h:180<br>total 230</div>
+</div>
+
+<p class="note"><code>box-sizing: border-box</code> with height:</p>
+<div class="row">
+  <div class="box h h7"><span class="label">H7</span> bb h:100 p:20 b:5<br>content 50</div>
+  <div class="box h h8"><span class="label">H8</span> bb h:100 p:40 b:15<br>content 0 (text overflows/hidden)</div>
+</div>
+
+<!-- ============ PART 3: MARGIN ============ -->
+<h2>Part 3 &ndash; Margin (outside the border)</h2>
+<p class="note">Margin adds space around the box but is not part of its painted area.</p>
+<div class="box m1"><span class="label">M1</span> margin 0</div>
+<div class="box m2"><span class="label">M2</span> margin 30px 0 30px 60px</div>
+
+</body>
+</html>

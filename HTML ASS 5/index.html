@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Periodic Table</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            background-image: url('https://i.pinimg.com/736x/9c/2c/ef/9c2cefd25ef4ded17ad49f088c6f731c.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        table {
+            margin: 30px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        td {
+            width: 55px;
+            height: 38px;
+            border: 2px solid white;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .metal {
+            background-color: #a9d9f0;
+        }
+
+        .nonmetal {
+            background-color: #ffd08f;
+        }
+
+        .metalloid {
+            background-color: #f5c7ad;
+        }
+
+        .halogen {
+            background-color: #7770e8;
+            color: white;
+        }
+
+        .noble {
+            background-color: #ff9b70;
+            color: white;
+        }
+
+        .lanthanide {
+            background-color: #ef6f76;
+            color: white;
+        }
+
+        .actinide {
+            background-color: #a9df75;
+        }
+
+        .empty {
+            border: none;
+            background-color: transparent;
+        }
+
+        .legend {
+            margin: 20px auto;
+            color: white;
+            text-align: center;
+        }
+
+        .legend span {
+            display: inline-block;
+            padding: 8px 15px;
+            margin: 4px;
+            font-size: 13px;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: white;
+            background-color: black;
+            border: radius 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Periodic Table</h1>
+
+    <div class="legend">
+        <span class="metal">Metals</span>
+        <span class="nonmetal">Nonmetals</span>
+        <span class="metalloid">Metalloids</span>
+        <span class="halogen">Halogens</span>
+        <span class="noble">Noble gases</span>
+        <span class="lanthanide">Lanthanides</span>
+        <span class="actinide">Actinoids</span>
+    </div>
+
+    <table>
+
+        <!-- Period 1 -->
+        <tr>
+            <td class="nonmetal">H</td>
+
+            <td class="empty" colspan="16"></td>
+
+            <td class="noble">He</td>
+        </tr>
+
+        <!-- Period 2 -->
+        <tr>
+            <td class="metal">Li</td>
+            <td class="metal">Be</td>
+
+            <td class="empty" colspan="10"></td>
+
+            <td class="metalloid">B</td>
+            <td class="nonmetal">C</td>
+            <td class="nonmetal">N</td>
+            <td class="nonmetal">O</td>
+            <td class="halogen">F</td>
+            <td class="noble">Ne</td>
+        </tr>
+
+        <!-- Period 3 -->
+        <tr>
+            <td class="metal">Na</td>
+            <td class="metal">Mg</td>
+
+            <td class="empty" colspan="10"></td>
+
+            <td class="metal">Al</td>
+            <td class="metalloid">Si</td>
+            <td class="nonmetal">P</td>
+            <td class="nonmetal">S</td>
+            <td class="halogen">Cl</td>
+            <td class="noble">Ar</td>
+        </tr>
+
+        <!-- Period 4 -->
+        <tr>
+            <td class="metal">K</td>
+            <td class="metal">Ca</td>
+            <td class="metal">Sc</td>
+            <td class="metal">Ti</td>
+            <td class="metal">V</td>
+            <td class="metal">Cr</td>
+            <td class="metal">Mn</td>
+            <td class="metal">Fe</td>
+            <td class="metal">Co</td>
+            <td class="metal">Ni</td>
+            <td class="metal">Cu</td>
+            <td class="metal">Zn</td>
+            <td class="metal">Ga</td>
+            <td class="metalloid">Ge</td>
+            <td class="metalloid">As</td>
+            <td class="nonmetal">Se</td>
+            <td class="halogen">Br</td>
+            <td class="noble">Kr</td>
+        </tr>
+
+        <!-- Period 5 -->
+        <tr>
+            <td class="metal">Rb</td>
+            <td class="metal">Sr</td>
+            <td class="metal">Y</td>
+            <td class="metal">Zr</td>
+            <td class="metal">Nb</td>
+            <td class="metal">Mo</td>
+            <td class="metal">Tc</td>
+            <td class="metal">Ru</td>
+            <td class="metal">Rh</td>
+            <td class="metal">Pd</td>
+            <td class="metal">Ag</td>
+            <td class="metal">Cd</td>
+            <td class="metal">In</td>
+            <td class="metal">Sn</td>
+            <td class="metalloid">Sb</td>
+            <td class="metalloid">Te</td>
+            <td class="halogen">I</td>
+            <td class="noble">Xe</td>
+        </tr>
+
+        <!-- Period 6 -->
+        <tr>
+            <td class="metal">Cs</td>
+            <td class="metal">Ba</td>
+            <td class="lanthanide">La</td>
+            <td class="metal">Hf</td>
+            <td class="metal">Ta</td>
+            <td class="metal">W</td>
+            <td class="metal">Re</td>
+            <td class="metal">Os</td>
+            <td class="metal">Ir</td>
+            <td class="metal">Pt</td>
+            <td class="metal">Au</td>
+            <td class="metal">Hg</td>
+            <td class="metal">Tl</td>
+            <td class="metal">Pb</td>
+            <td class="metalloid">Bi</td>
+            <td class="metalloid">Po</td>
+            <td class="halogen">At</td>
+            <td class="noble">Rn</td>
+        </tr>
+
+        <!-- Period 7 -->
+        <tr>
+            <td class="metal">Fr</td>
+            <td class="metal">Ra</td>
+            <td class="actinide">Ac</td>
+            <td class="metal">Rf</td>
+            <td class="metal">Db</td>
+            <td class="metal">Sg</td>
+            <td class="metal">Bh</td>
+            <td class="metal">Hs</td>
+            <td class="metal">Mt</td>
+            <td class="metal">Ds</td>
+            <td class="metal">Rg</td>
+            <td class="metal">Cn</td>
+            <td class="metal">Nh</td>
+            <td class="metal">Fl</td>
+            <td class="metal">Mc</td>
+            <td class="metal">Lv</td>
+            <td class="halogen">Ts</td>
+            <td class="noble">Og</td>
+        </tr>
+
+        <!-- Space -->
+        <tr>
+            <td class="empty" colspan="18" style="height:15px;"></td>
+        </tr>
+
+        <!-- Lanthanides -->
+        <tr>
+            <td class="empty" colspan="2"></td>
+
+            <td class="lanthanide">La</td>
+            <td class="lanthanide">Ce</td>
+            <td class="lanthanide">Pr</td>
+            <td class="lanthanide">Nd</td>
+            <td class="lanthanide">Pm</td>
+            <td class="lanthanide">Sm</td>
+            <td class="lanthanide">Eu</td>
+            <td class="lanthanide">Gd</td>
+            <td class="lanthanide">Tb</td>
+            <td class="lanthanide">Dy</td>
+            <td class="lanthanide">Ho</td>
+            <td class="lanthanide">Er</td>
+            <td class="lanthanide">Tm</td>
+            <td class="lanthanide">Yb</td>
+        </tr>
+
+        <!-- Actinides -->
+        <tr>
+            <td class="empty" colspan="2"></td>
+
+            <td class="actinide">Ac</td>
+            <td class="actinide">Th</td>
+            <td class="actinide">Pa</td>
+            <td class="actinide">U</td>
+            <td class="actinide">Np</td>
+            <td class="actinide">Pu</td>
+            <td class="actinide">Am</td>
+            <td class="actinide">Cm</td>
+            <td class="actinide">Bk</td>
+            <td class="actinide">Cf</td>
+            <td class="actinide">Es</td>
+            <td class="actinide">Fm</td>
+            <td class="actinide">Md</td>
+            <td class="actinide">No</td>
+        </tr>
+
+    </table>
+
+</body>
+</html>

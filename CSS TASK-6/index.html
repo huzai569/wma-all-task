@@ -1,0 +1,292 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>CSS Combinators</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: single readable column; each combinator gets a live DOM-tree demo that highlights real matches */
+:root {
+  --bg: #f3f6f8;
+  --surface: #ffffff;
+  --fg: #14232b;
+  --muted: #53656e;
+  --line: #d3dde2;
+  --accent: #0b6e6e;
+  --accent-soft: #dff1ef;
+  --match: #b45309;
+  --match-bg: #fde9c4;
+  --anchor: #1d4ed8;
+  --code-bg: #e8eef1;
+  --display: "Familjen Grotesk", "Segoe UI", system-ui, sans-serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e171c; --surface: #15222a; --fg: #e4eef2; --muted: #9db0b8; --line: #28393f;
+    --accent: #4fc4bd; --accent-soft: #123a3a; --match: #f6b352; --match-bg: #4a3513;
+    --anchor: #8fb0ff; --code-bg: #1d2e36; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e171c; --surface: #15222a; --fg: #e4eef2; --muted: #9db0b8; --line: #28393f;
+  --accent: #4fc4bd; --accent-soft: #123a3a; --match: #f6b352; --match-bg: #4a3513;
+  --anchor: #8fb0ff; --code-bg: #1d2e36; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font: 400 17px/1.6 var(--body);
+  padding-block: 28px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 1.7rem; font-weight: 700; }
+h3 { font-size: 1.25rem; font-weight: 500; }
+p { margin: 0; max-width: 65ch; }
+code, .mono { font-family: var(--mono); font-size: 0.88em; background: var(--code-bg); padding: 0.12em 0.4em; border-radius: 4px; }
+.eyebrow { font: 600 0.75rem/1 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+header { display: flex; flex-direction: column; gap: 14px; }
+header p { color: var(--muted); font-size: 1.12rem; }
+.symbols { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.symbols span { font: 600 1.5rem/1 var(--mono); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 18px; min-width: 64px; text-align: center; }
+.symbols small { display: block; font: 400 0.68rem/1.2 var(--body); color: var(--muted); margin-top: 6px; letter-spacing: 0.04em; }
+section { display: flex; flex-direction: column; gap: 16px; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.fact { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.fact b { font-family: var(--display); font-weight: 700; }
+.fact span { color: var(--muted); font-size: 0.97rem; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 18px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.card header { flex-direction: row; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.sym { font: 600 2rem/1 var(--mono); color: var(--accent); }
+.syntax { font-family: var(--mono); font-size: 0.95rem; }
+.card p { font-size: 0.98rem; }
+.steps { margin: 0; padding-left: 1.2em; color: var(--muted); font-size: 0.95rem; }
+pre { margin: 0; background: var(--code-bg); border-radius: 8px; padding: 12px 14px; overflow-x: auto; font: 400 0.85rem/1.5 var(--mono); }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.86rem; color: var(--muted); }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 6px; }
+.k-match { background: var(--match-bg); border: 1.5px solid var(--match); }
+.k-anchor { border: 1.5px dashed var(--anchor); }
+.tree { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px; display: flex; flex-direction: column; gap: 3px; overflow-x: auto; }
+.row { padding: 2px 8px 2px calc(8px + var(--d) * 18px); border: 1.5px solid transparent; border-radius: 5px; font: 400 0.85rem/1.5 var(--mono); white-space: nowrap; color: var(--muted); }
+.row b { font-weight: 600; color: var(--fg); }
+.row.anchor { border: 1.5px dashed var(--anchor); }
+.row.match { background: var(--match-bg); border: 1.5px solid var(--match); color: var(--fg); }
+.count { font: 600 0.82rem/1 var(--mono); color: var(--accent); }
+.play { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+label { font-weight: 600; font-size: 0.92rem; }
+input[type="text"] { width: 100%; font: 400 1.05rem/1.4 var(--mono); padding: 10px 12px; border: 1.5px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--fg); }
+input[type="text"]:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.presets { display: flex; flex-wrap: wrap; gap: 8px; }
+button { font: 600 0.88rem/1 var(--mono); padding: 9px 12px; border-radius: 8px; border: 1.5px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; }
+button:hover { border-color: var(--accent); }
+button[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.explain { color: var(--muted); font-size: 0.97rem; min-height: 3.2em; }
+.err { color: var(--match); font-weight: 600; }
+.tablewrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 0.95rem; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 600 0.74rem/1.2 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+ul.list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; max-width: 70ch; }
+footer { color: var(--muted); font-size: 0.9rem; }
+@media (prefers-reduced-motion: no-preference) { button { transition: border-color .15s, background .15s; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">CSS selectors / SMIT Task 6</span>
+    <h1>CSS Combinators</h1>
+    <p>A combinator sits between two selectors and says how the elements are related in the HTML tree. Every demo below runs a real selector on a real sample page and highlights what it matches.</p>
+    <div class="symbols" aria-label="The four combinators">
+      <span>␣<small>descendant</small></span>
+      <span>&gt;<small>child</small></span>
+      <span>+<small>adjacent sibling</small></span>
+      <span>~<small>general sibling</small></span>
+    </div>
+  </header>
+
+  <section>
+    <h2>How the browser reads a selector</h2>
+    <p>HTML is a tree. Each element has a parent, may have children, and may have siblings that share its parent. Combinators use exactly these links.</p>
+    <div class="facts">
+      <div class="fact"><b>Right to left</b><span>For <code>div p</code> the browser finds every <code>p</code> first, then checks whether that <code>p</code> has a <code>div</code> above it.</span></div>
+      <div class="fact"><b>Key selector</b><span>The rightmost part is the element that gets styled. Everything to its left is only a condition.</span></div>
+      <div class="fact"><b>No extra weight</b><span>Combinators add no specificity. <code>ul &gt; li</code> and <code>ul li</code> both weigh (0,0,2).</span></div>
+    </div>
+    <p>The sample page used in every demo:</p>
+    <div class="legend"><span><i class="k-anchor"></i>left part (A)</span><span><i class="k-match"></i>selected element (B)</span></div>
+    <div class="tree" id="sample" aria-label="Sample HTML tree"></div>
+  </section>
+
+  <section>
+    <h2>The four combinators</h2>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section>
+    <h2>Try your own selector</h2>
+    <div class="play">
+      <label for="sel">Type a selector or pick one</label>
+      <input type="text" id="sel" value="section p" autocomplete="off" spellcheck="false">
+      <div class="presets" id="presets"></div>
+      <p class="explain" id="explain" aria-live="polite"></p>
+      <div class="count" id="count"></div>
+      <div class="tree" id="playtree"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Side by side</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Name</th><th>Symbol</th><th>Syntax</th><th>Matches</th><th>Depth</th></tr></thead>
+        <tbody>
+          <tr><td>Descendant</td><td class="mono">space</td><td><code>A B</code></td><td>Every <code>B</code> inside <code>A</code></td><td>Any level</td></tr>
+          <tr><td>Child</td><td class="mono">&gt;</td><td><code>A &gt; B</code></td><td><code>B</code> that is a direct child of <code>A</code></td><td>One level</td></tr>
+          <tr><td>Adjacent sibling</td><td class="mono">+</td><td><code>A + B</code></td><td>The one <code>B</code> right after <code>A</code></td><td>Next element only</td></tr>
+          <tr><td>General sibling</td><td class="mono">~</td><td><code>A ~ B</code></td><td>All <code>B</code> after <code>A</code> under one parent</td><td>All later siblings</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Common mistakes</h2>
+    <ul class="list">
+      <li>Expecting <code>+</code> or <code>~</code> to select earlier siblings. They only look forward in the HTML order.</li>
+      <li>Using the descendant space when only direct children are wanted. Nested elements get styled by accident.</li>
+      <li>Expecting siblings to match across parents. <code>h2 + p</code> needs both elements under the same parent.</li>
+      <li>Long chains such as <code>div ul li a span</code>. They break when the HTML changes, so keep selectors short.</li>
+    </ul>
+  </section>
+
+  <footer>Spaces around <code>&gt;</code>, <code>+</code> and <code>~</code> are optional, so <code>div&gt;p</code> and <code>div &gt; p</code> work the same.</footer>
+</div>
+
+<script>
+(function () {
+  var SAMPLE = '<div class="box"><h2>Title</h2><p>Intro</p><p>Details</p><section><p>Inside section</p><span>note</span></section><h2>Second title</h2><p>After second</p><ul><li>One</li><li>Two<ul><li>Nested</li></ul></li></ul></div>';
+  var tpl = document.createElement('template');
+  tpl.innerHTML = SAMPLE;
+  var root = tpl.content.firstElementChild;
+
+  function tag(el) {
+    return '<' + el.tagName.toLowerCase() + (el.className ? ' class="' + el.className + '"' : '') + '>';
+  }
+  function ownText(el) {
+    var t = '';
+    el.childNodes.forEach(function (n) { if (n.nodeType === 3) t += n.textContent; });
+    return t.trim();
+  }
+  function tokens(sel) {
+    return sel.replace(/\s*([>+~])\s*/g, ' $1 ').trim().split(/\s+/).filter(Boolean);
+  }
+  function leftPart(sel) {
+    var t = tokens(sel);
+    if (t.length < 2) return '';
+    var isComb = /^[>+~]$/.test(t[t.length - 2]);
+    return t.slice(0, isComb ? -2 : -1).join(' ');
+  }
+  function find(sel) {
+    try { return new Set(tpl.content.querySelectorAll(sel)); } catch (e) { return null; }
+  }
+  function render(container, sel) {
+    container.innerHTML = '';
+    var m = sel ? find(sel) : new Set();
+    if (m === null) return -1;
+    var a = new Set();
+    var lp = sel ? leftPart(sel) : '';
+    if (lp) { var f = find(lp); if (f) a = f; }
+    (function walk(el, d) {
+      var r = document.createElement('div');
+      r.className = 'row' + (m.has(el) ? ' match' : '') + (a.has(el) ? ' anchor' : '');
+      r.style.setProperty('--d', d);
+      var txt = ownText(el);
+      r.innerHTML = '<b></b>' + (txt ? ' ' : '');
+      r.firstChild.textContent = tag(el);
+      if (txt) r.appendChild(document.createTextNode(txt));
+      container.appendChild(r);
+      Array.prototype.forEach.call(el.children, function (c) { walk(c, d + 1); });
+    })(root, 0);
+    return m.size;
+  }
+
+  render(document.getElementById('sample'), '');
+
+  var CARDS = [
+    { sym: '␣', name: 'Descendant', syntax: 'A B', sel: 'section p',
+      text: 'Selects every B anywhere inside A, however deep. Children, grandchildren and further down all count.',
+      steps: ['Find every p on the page.', 'Walk up through its parents.', 'Keep it if any ancestor is a section.'],
+      code: 'section p {\n  color: navy;\n}' },
+    { sym: '>', name: 'Child', syntax: 'A > B', sel: 'ul > li',
+      text: 'Selects B only when A is its direct parent. Grandchildren are skipped.',
+      steps: ['Find every li.', 'Look at its immediate parent only.', 'Keep it if that parent is a ul.'],
+      code: 'ul > li {\n  list-style: square;\n}' },
+    { sym: '+', name: 'Adjacent sibling', syntax: 'A + B', sel: 'h2 + p',
+      text: 'Selects the single B placed immediately after A, with the same parent. B must come after A in the HTML.',
+      steps: ['Find every p.', 'Look at the element just before it.', 'Keep it if that element is an h2.'],
+      code: 'h2 + p {\n  font-weight: bold;\n}' },
+    { sym: '~', name: 'General sibling', syntax: 'A ~ B', sel: 'h2 ~ p',
+      text: 'Selects every B that comes after A under the same parent. Other elements may sit in between.',
+      steps: ['Find every p.', 'Look at all earlier siblings.', 'Keep it if any of them is an h2.'],
+      code: 'h2 ~ p {\n  color: gray;\n}' }
+  ];
+  var cards = document.getElementById('cards');
+  CARDS.forEach(function (c) {
+    var el = document.createElement('article');
+    el.className = 'card';
+    el.innerHTML = '<header><span class="sym"></span><h3></h3><span class="syntax"></span></header><p></p><ol class="steps"></ol><pre></pre><div class="count"></div><div class="tree"></div>';
+    el.querySelector('.sym').textContent = c.sym;
+    el.querySelector('h3').textContent = c.name;
+    el.querySelector('.syntax').textContent = c.syntax;
+    el.querySelector('p').textContent = c.text;
+    c.steps.forEach(function (s) { var li = document.createElement('li'); li.textContent = s; el.querySelector('.steps').appendChild(li); });
+    el.querySelector('pre').textContent = c.code;
+    var n = render(el.querySelector('.tree'), c.sel);
+    el.querySelector('.count').textContent = c.sel + ' selects ' + n + ' element' + (n === 1 ? '' : 's');
+    cards.appendChild(el);
+  });
+
+  var EXPLAIN = {
+    ' ': 'Descendant: every match of the last part that has an element matching the left part somewhere above it.',
+    '>': 'Child: only matches whose direct parent matches the left part.',
+    '+': 'Adjacent sibling: only the element placed immediately after an element matching the left part.',
+    '~': 'General sibling: every later sibling of an element matching the left part.'
+  };
+  var input = document.getElementById('sel');
+  var tree = document.getElementById('playtree');
+  var count = document.getElementById('count');
+  var explain = document.getElementById('explain');
+  var presets = document.getElementById('presets');
+  var PRE = ['section p', '.box > p', 'h2 + p', 'h2 ~ p', 'ul li', 'ul > li', 'li li', 'section > p + span'];
+
+  function update() {
+    var sel = input.value.trim();
+    var n = render(tree, sel);
+    Array.prototype.forEach.call(presets.children, function (b) { b.setAttribute('aria-pressed', b.textContent === sel ? 'true' : 'false'); });
+    if (n === -1) {
+      count.textContent = '';
+      explain.innerHTML = '<span class="err">That is not a valid selector.</span> Check for a stray symbol, then try again.';
+      return;
+    }
+    var t = tokens(sel);
+    var key = t.length < 2 ? null : (/^[>+~]$/.test(t[t.length - 2]) ? t[t.length - 2] : ' ');
+    explain.textContent = key ? EXPLAIN[key] : 'A single selector with no combinator. Add a second part, such as p or section p.';
+    count.textContent = n + ' element' + (n === 1 ? '' : 's') + ' selected';
+  }
+  PRE.forEach(function (p) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = p;
+    b.addEventListener('click', function () { input.value = p; update(); });
+    presets.appendChild(b);
+  });
+  input.addEventListener('input', update);
+  update();
+})();
+</script>
+
+</body></html>
