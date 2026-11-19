@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+}
+
+.navbar {
+    background-color: #303030;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 3.2%;
+}
+
+.logo {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+}
+.hero {    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 38px 3.3%;
+    min-height: 454px;
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-content h1 {
+    font-size: 36px;
+    line-height: 1.2;
+    max-width: 500px;
+    margin-bottom: 16px;
+}
+
+.hero-content p {
+    font-size: 14px;
+    margin-bottom: 23px;
+    line-height: 1.5;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #087bfa;
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.hero-image {
+    width: 37%;
+    max-width: 376px;
+    aspect-ratio: 1 / 1;
+    background-color: #ccc;
+    border-radius: 9px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image span {
+    font-size: 40px;
+    color: #999;
+}
+
+/* =========================
+   FEATURES SECTION
+========================= */
+
+.features {
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding: 38px 3%;
+    gap: 20px;
+}
+
+.feature {
+    flex: 1;
+}
+
+.feature h2 {
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+.feature p {
+    font-size: 12px;
+}
+
+
+.testimonials {
+    text-align: center;
+    padding: 38px 20px 50px;
+}
+
+.testimonials h2 {
+    font-size: 29px;
+    margin-bottom: 24px;
+}
+
+.review {
+    margin-bottom: 16px;
+}
+
+.review p {
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+.review span {
+    font-size: 12px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    background-color: #303030;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 3.2%;
+    font-size: 12px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
