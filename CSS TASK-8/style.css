@@ -90,18 +90,13 @@ body {
     font-size: 40px;
     color: #999;
 }
-
-/* =========================
-   FEATURES SECTION
-========================= */
-
 .features {
     background-color: #f8f8f8;
     display: flex;
     justify-content: space-around;
     align-items: center;
     text-align: center;
-    padding: 38px 3%;
+    padding: 38px 3%; 
     gap: 20px;
 }
 
@@ -142,11 +137,6 @@ body {
 .review span {
     font-size: 12px;
 }
-
-/* =========================
-   FOOTER
-========================= */
-
 .footer {
     background-color: #303030;
     color: white;
@@ -154,7 +144,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 3.2%;
-    font-size: 12px;
+    font-size: 14px;
+    word-spacing: 11px;
 }
 
 .footer-links {
